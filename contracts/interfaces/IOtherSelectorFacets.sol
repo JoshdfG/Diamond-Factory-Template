@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "../facets/DiamondCutFacet.sol";
 import "../facets/DiamondLoupeFacet.sol";
 import "../facets/OwnershipFacet.sol";
-import "../organisation/facets/ChildFacet.sol";
+import "../child/facets/ChildFacet.sol";
 
 interface IOtherSelectorFacets {
     function getLoupeSelectors() external pure returns (bytes4[] memory);

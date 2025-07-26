@@ -3,9 +3,9 @@ pragma solidity ^0.8.0;
 
 import "../interfaces/IDeployChildDiamondFacet.sol";
 import "../libraries/LibUtils.sol";
-import {ChildFacet} from "../organisation/facets/ChildFacet.sol";
+import {ChildFacet} from "../child/facets/ChildFacet.sol";
 import "../interfaces/ICreateChildFacet.sol";
-import "../organisation/Organisation.sol";
+import "../child/Organisation.sol";
 import "../libraries/Events.sol";
 
 contract CreateChildFacet is ICreateChildFacet {

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {ChildFacet} from "../organisation/facets/ChildFacet.sol";
+import {ChildFacet} from "../child/facets/ChildFacet.sol";
 
 contract ChildSelectorsFacet {
     function getChildSelectors() external pure returns (bytes4[] memory) {

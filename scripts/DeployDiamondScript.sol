@@ -8,7 +8,7 @@ import "../contracts/facets/OwnershipFacet.sol";
 import "../contracts/facets/OrganisationFactoryFacet.sol";
 import "../contracts/facets/CreateChildFacet.sol";
 import "../contracts/facets/DeployChildDiamondFacet.sol";
-import "../contracts/organisation/facets/ChildFacet.sol";
+import "../contracts/child/facets/ChildFacet.sol";
 import "../contracts/Diamond.sol";
 import {FacetCut, FacetCutAction} from "../contracts/interfaces/IDiamondCut.sol";
 import "../contracts/facets/OtherSelectorFacets.sol";
@@ -31,7 +31,7 @@ contract DiamondUpgradeScript is Script {
         console.log("OwnershipFacet deployed: %s", address(ownerF));
 
         DeployChildDiamondFacet deployChildFacet = new DeployChildDiamondFacet();
-        console.log("DeployOrgDiamondFacet deployed: %s", address(deployChildFacet));
+        console.log("DeployChildDiamondFacet deployed: %s", address(deployChildFacet));
 
         CreateChildFacet createChildFacet = new CreateChildFacet();
         console.log("CreateOrganisationFacet deployed: %s", address(createChildFacet));
@@ -43,7 +43,7 @@ contract DiamondUpgradeScript is Script {
         console.log("OtherSelectorFacets deployed: %s", address(otherSelectorFacets));
 
         ChildSelectorsFacet childSelectorsFacet = new ChildSelectorsFacet();
-        console.log("OrganisationSelectorsFacet deployed: %s", address(childSelectorsFacet));
+        console.log("ChildSelectorsFacet deployed: %s", address(childSelectorsFacet));
 
         FacetCut[] memory cut = new FacetCut[](8);
         cut[0] = FacetCut({
@@ -103,17 +103,17 @@ contract DiamondUpgradeScript is Script {
         bytes memory constructorArgs = abi.encode(deployer, cut, address(orgFactoryFacet), initCalldata);
         console.log("Constructor arguments (hex): %s", vm.toString(constructorArgs));
 
-        console.log("Creating organisation...");
+        console.log("Creating child...");
         OrganisationFactoryFacet orgFactory = OrganisationFactoryFacet(diamondAddress);
-        (address organisation) = orgFactory.createorganisation();
+        (address child) = orgFactory.createorganisation();
 
-        console.log("Organisation deployed: %s", organisation);
+        console.log("Organisation deployed: %s", child);
 
         vm.stopBroadcast();
 
         writeAddressesToFile(address(orgFactoryFacet), "orgFactoryFacet");
         writeAddressesToFile(diamondAddress, "Diamond address");
-        writeAddressesToFile(organisation, "Organisation address");
+        writeAddressesToFile(child, "Child address");
     }
 
     function writeAddressesToFile(address addr, string memory text) public {

@@ -6,7 +6,7 @@ import "../contracts/facets/DiamondCutFacet.sol";
 import "../contracts/facets/DiamondLoupeFacet.sol";
 import "../contracts/facets/OwnershipFacet.sol";
 import "../contracts/libraries/LibUtils.sol";
-import "./../contracts/organisation/facets/ChildFacet.sol";
+import "./../contracts/child/facets/ChildFacet.sol";
 import "../contracts/interfaces/IDiamondCut.sol";
 import "../contracts/facets/OrganisationFactoryFacet.sol";
 import "../contracts/facets/CreateChildFacet.sol";
@@ -16,7 +16,7 @@ import "../contracts/facets/OtherSelectorFacets.sol";
 import "../lib/forge-std/src//Test.sol";
 import "../contracts/Diamond.sol";
 import "../contracts/libraries/Error.sol";
-import "../contracts/organisation/libraries/LibChild.sol";
+import "../contracts/child/libraries/LibChild.sol";
 import "../contracts/interfaces/IChild.sol";
 
 contract DiamondDeployer is Test, IDiamondCut {
